@@ -1,0 +1,1251 @@
+class User
+{
+	//create global user constants
+	boolean NAt = false;
+	boolean SAt = false;
+	boolean ASt = false;
+	boolean AUt = false;
+	boolean EUt = false;
+	boolean AFt = false;
+
+	int uaroll1;
+	int uaroll2;
+
+	int troopnum;
+
+	//general user array framework
+	User(boolean NA, boolean SA, boolean AS, boolean AU, boolean EU, boolean AF, int attroll1, int attroll2, int troops)
+	{
+		//make the User array parameters global
+		NA = NAt;
+		SA = SAt;
+		AS = ASt;
+		AU = AUt;
+		EU = EUt;
+		AF = AFt;
+
+		uaroll1 = attroll1;
+		uaroll2 = attroll2;
+
+	}
+
+	//RUN IF MOUSE CLICKED
+	void mouseClicked()
+	{
+
+		if (count < 15 || tArray[0].troopnum > 0 || (tArray[0].troopnum == 0 && tArray[0].atroopnum == 0))
+		{
+			if (mouseX >= tArray[0].x && mouseX <= tArray[0].x + (SAy + 20) &&
+				mouseY >= tArray[0].y && mouseY <= (tArray[0].y + SAx - 200))
+			{
+				//check to see if the mouse clicks SOUTH AMERICA
+
+
+				overt = true; // set the boolean expression to true
+				if (utn == 0)
+				{
+					text("No troops available! Wait till next turn.", 1000, 800);
+					//IF attacks have been rolled then carry out internal territory attack on South America
+					if (click == 1)
+					{
+						tclicked = true;
+
+						uattacks = uattacks - 1;
+						pressedSA = true;
+						//Internal territory attack calculation
+						if (tArray[0].atroopnum < uArray[0].uaroll1)
+						{
+							tArray[0].troopnum = tArray[0].troopnum - tArray[0].atroopnum;
+						}
+						else
+						{
+							tArray[0].troopnum = tArray[0].troopnum - uArray[0].uaroll1;
+						}
+						//Dont allow the user troop number to drop below 0
+						if (tArray[0].troopnum < 0)
+						{
+							tArray[0].troopnum = 0;
+						}
+						tArray[0].atroopnum = tArray[0].atroopnum - uArray[0].uaroll1;
+						//Dont allow the agent troop number to drop below 0
+						if (tArray[0].atroopnum < 0)
+						{
+							tArray[0].atroopnum = 0;
+						}
+
+					}
+				}
+				else
+				{
+					//if  click occurs on a territory and there are user troops in the reserve then...
+					//add one to the territory and minus one from the reserve
+					tArray[0].troopnum = tArray[0].troopnum + 1;
+
+					utn = utn - 1;
+				}
+
+
+			}
+
+		}
+		if (count < 15 || tArray[1].troopnum > 0 || (tArray[1].troopnum == 0 && tArray[1].atroopnum == 0))
+		{
+			if (mouseX > tArray[1].x && mouseX < tArray[1].x + (375) &&
+				mouseY > tArray[1].y && mouseY < (tArray[1].y + 400))
+			{
+				//check to see if the mouse clicks NORTH AMERICA
+
+				overt = true; // set the boolean expression to true
+				if (utn == 0)
+				{
+					text("No troops available! Wait till next turn.", 1000, 800);
+					if (click == 1)
+					{
+						tclicked = true;
+						uattacks = uattacks - 1;
+						pressedNA = true;
+
+						if (tArray[1].atroopnum < uArray[0].uaroll1)
+						{
+							tArray[1].troopnum = tArray[1].troopnum - tArray[1].atroopnum;
+						}
+						else
+						{
+							tArray[1].troopnum = tArray[1].troopnum - uArray[0].uaroll1;
+						}
+						//Dont allow the user troop number to drop below 0
+						if (tArray[1].troopnum < 0)
+						{
+							tArray[1].troopnum = 0;
+						}
+						tArray[1].atroopnum = tArray[1].atroopnum - uArray[0].uaroll1;
+						//Dont allow the agent troop number to drop below 0
+						if (tArray[1].atroopnum < 0)
+						{
+							tArray[1].atroopnum = 0;
+						}
+
+					}
+				}
+				else
+				{
+					//if  click occurs on a territory and there are user troops in the reserve then...
+					//add one to the territory and minus one from the reserve
+					tArray[1].troopnum = tArray[1].troopnum + 1;
+					utn = utn - 1;
+				}
+
+			}
+
+		}
+		if (count < 15 || tArray[2].troopnum > 0 || (tArray[2].troopnum == 0 && tArray[2].atroopnum == 0))
+		{
+			if (mouseX > tArray[2].x + 100 && mouseX < tArray[2].x + (400) &&
+				mouseY > tArray[2].y && mouseY < (tArray[2].y + 400))
+			{
+				//check to see if the mouse clicks ASIA
+
+				overt = true; // set the boolean expression to true
+				if (utn == 0)
+				{
+					text("No troops available! Wait till next turn.", 1000, 800);
+					if (click == 1)
+					{
+						tclicked = true;
+						uattacks = uattacks - 1;
+						pressedAS = true;
+						if (tArray[2].atroopnum < uArray[0].uaroll1)
+						{
+							tArray[2].troopnum = tArray[2].troopnum - tArray[2].atroopnum;
+						}
+						else
+						{
+							tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+						}
+						//Dont allow the user troop number to drop below 0
+						if (tArray[2].troopnum < 0)
+						{
+							tArray[2].troopnum = 0;
+						}
+						tArray[2].atroopnum = tArray[2].atroopnum - uArray[0].uaroll1;
+						//Dont allow the agent troop number to drop below 0
+						if (tArray[2].atroopnum < 0)
+						{
+							tArray[2].atroopnum = 0;
+						}
+					}
+				}
+				else
+				{
+					//if  click occurs on a territory and there are user troops in the reserve then...
+					//add one to the territory and minus one from the reserve
+					tArray[2].troopnum = tArray[2].troopnum + 1;
+
+					utn = utn - 1;
+				}
+
+
+			}
+
+		}
+		if (count < 15 || tArray[3].troopnum > 0 || (tArray[3].troopnum == 0 && tArray[3].atroopnum == 0))
+		{
+			if (mouseX > tArray[3].x && mouseX < tArray[3].x + (200) &&
+				mouseY > tArray[3].y && mouseY < (tArray[3].y + 150))
+			{
+				//check to see if the mouse clicks AUSTRALIA
+
+				overt = true; // set the boolean expression to true
+				if (utn == 0)
+				{
+					text("No troops available! Wait till next turn.", 1000, 800);
+					if (click == 1)
+					{
+						tclicked = true;
+						uattacks = uattacks - 1;
+						pressedAU = true;
+						if (tArray[3].atroopnum < uArray[0].uaroll1)
+						{
+							tArray[3].troopnum = tArray[3].troopnum - tArray[3].atroopnum;
+						}
+						else
+						{
+							tArray[3].troopnum = tArray[3].troopnum - uArray[0].uaroll1;
+						}
+						//Dont allow the user troop number to drop below 0
+						if (tArray[3].troopnum < 0)
+						{
+							tArray[3].troopnum = 0;
+						}
+						tArray[3].atroopnum = tArray[3].atroopnum - uArray[0].uaroll1;
+						//Dont allow the agent troop number to drop below 0
+						if (tArray[3].atroopnum < 0)
+						{
+							tArray[3].atroopnum = 0;
+						}
+
+					}
+				}
+				else
+				{
+
+					tArray[3].troopnum = tArray[3].troopnum + 1;
+					//if  click occurs on a territory and there are user troops in the reserve then...
+					//add one to the territory and minus one from the reserve
+					utn = utn - 1;
+				}
+			}
+
+		}
+		if (count < 15 || tArray[4].troopnum > 0 || (tArray[4].troopnum == 0 && tArray[4].atroopnum == 0))
+		{
+			if (mouseX > tArray[4].x && mouseX < tArray[4].x + (220) &&
+				mouseY > tArray[4].y && mouseY < (tArray[4].y + 250))
+			{
+				//check to see if the mouse clicks EUROPE
+
+				overt = true; // set the boolean expression to true
+				if (utn == 0)
+				{
+					text("No troops available! Wait till next turn.", 1000, 800);
+					if (click == 1)
+					{
+						tclicked = true;
+						uattacks = uattacks - 1;
+						pressedEU = true;
+						if (tArray[4].atroopnum < uArray[0].uaroll1)
+						{
+							tArray[4].troopnum = tArray[4].troopnum - tArray[4].atroopnum;
+						}
+						else
+						{
+							tArray[4].troopnum = tArray[4].troopnum - uArray[0].uaroll1;
+						}
+						//Dont allow the user troop number to drop below 0
+						if (tArray[4].troopnum < 0)
+						{
+							tArray[4].troopnum = 0;
+						}
+						tArray[4].atroopnum = tArray[4].atroopnum - uArray[0].uaroll1;
+						//Dont allow the agent troop number to drop below 0
+						if (tArray[4].atroopnum < 0)
+						{
+							tArray[4].atroopnum = 0;
+						}
+
+					}
+				}
+				else
+				{
+					//if  click occurs on a territory and there are user troops in the reserve then...
+					//add one to the territory and minus one from the reserve
+					tArray[4].troopnum = tArray[4].troopnum + 1;
+					utn = utn - 1;
+				}
+			}
+		}
+		if (count < 15 || tArray[5].troopnum > 0 || (tArray[5].troopnum == 0 && tArray[5].atroopnum == 0))
+		{
+			if (mouseX > tArray[5].x && mouseX < tArray[5].x + (200) &&
+				mouseY > tArray[5].y && mouseY < (tArray[5].y + 270))
+			{
+				//check to see if the mouse clicks AFRICA
+
+				overt = true; // set the boolean expression to true
+				if (utn == 0)
+				{
+					text("No troops available! Wait till next turn.", 1000, 800);
+					if (click == 1)
+					{
+						tclicked = true;
+						uattacks = uattacks - 1;
+						pressedAF = true;
+						if (tArray[5].atroopnum < uArray[0].uaroll1)
+						{
+							tArray[5].troopnum = tArray[5].troopnum - tArray[5].atroopnum;
+						}
+						else
+						{
+							tArray[5].troopnum = tArray[5].troopnum - uArray[0].uaroll1;
+						}
+						//Dont allow the user troop number to drop below 0
+						if (tArray[5].troopnum < 0)
+						{
+							tArray[5].troopnum = 0;
+						}
+						tArray[5].atroopnum = tArray[5].atroopnum - uArray[0].uaroll1;
+						//Dont allow the agent troop number to drop below 0
+						if (tArray[5].atroopnum < 0)
+						{
+							tArray[5].atroopnum = 0;
+						}
+
+					}
+				}
+				else
+				{
+					//if  click occurs on a territory and there are user troops in the reserve then...
+					//add one to the territory and minus one from the reserve
+
+					tArray[5].troopnum = tArray[5].troopnum + 1;
+					utn = utn - 1;
+				}
+			}
+		}
+	}
+	void mousePressed()
+	{
+
+		//If the mouse is pressed down on south america
+		if (mouseX >= tArray[0].x && mouseX <= tArray[0].x + (SAy + 20) &&
+			mouseY >= tArray[0].y && mouseY <= (tArray[0].y + SAx - 200))
+		{
+			pressedSA = true;
+		}
+		else
+		{
+			pressedSA = false;
+		}
+
+		//If the mouse is pressed down on north america
+		if (mouseX > tArray[1].x && mouseX < tArray[1].x + (375) &&
+			mouseY > tArray[1].y && mouseY < (tArray[1].y + 400))
+		{
+
+			pressedNA = true;
+		}
+		else
+		{
+			pressedNA = false;
+		}
+		//If the mouse is pressed down on Asia
+		if (mouseX > tArray[2].x + 100 && mouseX < tArray[2].x + (400) &&
+			mouseY > tArray[2].y && mouseY < (tArray[2].y + 400))
+		{
+
+			pressedAS = true;
+		}
+		else
+		{
+			pressedAS = false;
+		}
+		//If the mouse is pressed down on australia
+		if (mouseX > tArray[3].x && mouseX < tArray[3].x + (200) &&
+			mouseY > tArray[3].y && mouseY < (tArray[3].y + 150))
+		{
+			pressedAU = true;
+		}
+		else
+		{
+			pressedAU = false;
+		}
+		//If the mouse is pressed down on europe
+		if (mouseX > tArray[4].x && mouseX < tArray[4].x + (220) &&
+			mouseY > tArray[4].y && mouseY < (tArray[4].y + 250))
+		{
+			pressedEU = true;
+		}
+		else
+		{
+			pressedEU = false;
+		}
+
+		//If the mouse is pressed down on africa
+		if (mouseX > tArray[5].x && mouseX < tArray[5].x + (200) &&
+			mouseY > tArray[5].y && mouseY < (tArray[5].y + 270))
+		{
+			pressedAF = true;
+		}
+		else
+		{
+			pressedAF = false;
+		}
+	}
+
+	void mouseReleased()
+	{
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////// Release on SAmerica
+		//if mouse release on South America
+		if (mouseX >= tArray[0].x && mouseX <= tArray[0].x + (SAy + 20) &&
+			mouseY >= tArray[0].y && mouseY <= (tArray[0].y + SAx - 200))
+		{
+			releaseSA = true;
+			// if during attack phase and there are drag attacks left and North america was pressed
+			if (releaseSA == true && click == 1 && pressedNA == true && dragattacks > 0 && tArray[1].atroopnum == 0)
+			{
+
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[0].atroopnum == 0)
+				{
+					if (tArray[1].troopnum < uArray[0].uaroll1)
+					{
+						tArray[0].troopnum = tArray[0].troopnum + tArray[1].troopnum;
+						tArray[1].troopnum = tArray[1].troopnum - tArray[1].troopnum;
+					}
+					else
+					{
+						tArray[0].troopnum = tArray[0].troopnum + uArray[0].uaroll1;
+						tArray[1].troopnum = tArray[1].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+				if (tArray[1].troopnum < uArray[0].uaroll1)
+				{
+
+					tArray[0].atroopnum = tArray[0].atroopnum - tArray[1].troopnum;
+					tArray[1].troopnum = tArray[1].troopnum - tArray[1].troopnum;
+
+
+				}
+				if (tArray[0].atroopnum < uArray[0].uaroll1)
+				{
+
+					tArray[1].troopnum = tArray[1].troopnum - tArray[0].atroopnum;
+					tArray[0].atroopnum = tArray[0].atroopnum - tArray[0].atroopnum;
+
+				}
+				else
+				{
+					tArray[1].troopnum = tArray[1].troopnum - uArray[0].uaroll1;
+					tArray[0].atroopnum = tArray[0].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[1].troopnum < 0)
+				{
+					tArray[1].troopnum = 0;
+				}
+
+				if (tArray[0].atroopnum < 0)
+				{
+					tArray[0].atroopnum = 0;
+				}
+
+
+				//minus one from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				// print(rand);
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedSA = false;
+			}
+
+			//if during attack phase and there are drag attacks left and africa was pressed
+			if (releaseSA == true && click == 1 && pressedAF == true && dragattacks > 0 && tArray[5].atroopnum == 0)
+			{
+
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[0].atroopnum == 0)
+				{
+					if (tArray[5].troopnum < uArray[0].uaroll1)
+					{
+						tArray[0].troopnum = tArray[0].troopnum + tArray[5].troopnum;
+						tArray[5].troopnum = tArray[5].troopnum - tArray[5].troopnum;
+					}
+					else
+					{
+						tArray[0].troopnum = tArray[0].troopnum + uArray[0].uaroll1;
+						tArray[5].troopnum = tArray[5].troopnum - uArray[0].uaroll1;
+					}
+
+				}
+				if (tArray[5].troopnum < uArray[0].uaroll1)
+				{
+					// print("roll is bigger than my troops and i should work");
+					tArray[0].atroopnum = tArray[0].atroopnum - tArray[5].troopnum;
+					tArray[5].troopnum = tArray[5].troopnum - tArray[5].troopnum;
+
+
+				}
+				if (tArray[0].atroopnum < uArray[0].uaroll1)
+				{
+					//     print("roll is bigger than enemy troops and i should work");
+					tArray[5].troopnum = tArray[5].troopnum - tArray[0].atroopnum;
+					tArray[0].atroopnum = tArray[0].atroopnum - tArray[0].atroopnum;
+
+				}
+				else
+				{
+					//  print("roll is smaller than enemy troops and i should work");
+					tArray[5].troopnum = tArray[5].troopnum - uArray[0].uaroll1;
+					tArray[0].atroopnum = tArray[0].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[5].troopnum < 0)
+				{
+					tArray[5].troopnum = 0;
+				}
+
+				if (tArray[0].atroopnum < 0)
+				{
+					tArray[0].atroopnum = 0;
+				}
+
+
+				//minus one from the drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				//print(rand);
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedAF = false;
+			}
+
+			releaseSA = false;
+
+		}
+
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////// Release on NAmerica
+		//if mouse released on North America
+		if (mouseX > tArray[1].x && mouseX < tArray[1].x + (375) &&
+			mouseY > tArray[1].y && mouseY < (tArray[1].y + 400))
+		{
+			releaseNA = true;
+			//if during attack phase and there are drag attacks left and South America was pressed
+			if (releaseNA == true && click == 1 && pressedSA == true && dragattacks > 0 && tArray[0].atroopnum == 0)
+			{
+
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[1].atroopnum == 0)
+				{
+					if (tArray[0].troopnum < uArray[0].uaroll1)
+					{
+						tArray[1].troopnum = tArray[1].troopnum + tArray[0].troopnum;
+						tArray[0].troopnum = tArray[0].troopnum - tArray[0].troopnum;
+					}
+					else
+					{
+						tArray[1].troopnum = tArray[1].troopnum + uArray[0].uaroll1;
+						tArray[0].troopnum = tArray[0].troopnum - uArray[0].uaroll1;
+					}
+				}
+				if (tArray[0].troopnum < uArray[0].uaroll1)
+				{
+					tArray[1].atroopnum = tArray[1].atroopnum - tArray[0].troopnum;
+					tArray[0].troopnum = tArray[0].troopnum - tArray[0].troopnum;
+
+
+				}
+				if (tArray[1].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[0].troopnum = tArray[0].troopnum - tArray[1].atroopnum;
+					tArray[1].atroopnum = tArray[1].atroopnum - tArray[1].atroopnum;
+
+				}
+				else
+				{
+					tArray[0].troopnum = tArray[0].troopnum - uArray[0].uaroll1;
+					tArray[1].atroopnum = tArray[1].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[0].troopnum < 0)
+				{
+					tArray[0].troopnum = 0;
+				}
+
+				if (tArray[1].atroopnum < 0)
+				{
+					tArray[1].atroopnum = 0;
+				}
+
+
+				//minus one from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				// print(rand);
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedSA = false;
+			}
+			//if during attack phase and there are drag attacks left and Europe was pressed
+			if (releaseNA == true && click == 1 && pressedEU == true && dragattacks > 0 && tArray[4].atroopnum == 0)
+			{
+
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[1].atroopnum == 0)
+				{
+					if (tArray[4].troopnum < uArray[0].uaroll1)
+					{
+						tArray[1].troopnum = tArray[1].troopnum + tArray[4].troopnum;
+						tArray[4].troopnum = tArray[4].troopnum - tArray[4].troopnum;
+					}
+					else
+					{
+						tArray[1].troopnum = tArray[1].troopnum + uArray[0].uaroll1;
+						tArray[4].troopnum = tArray[4].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+				if (tArray[4].troopnum < uArray[0].uaroll1)
+				{
+					// print("roll is bigger than my troops and i should work");
+					tArray[1].atroopnum = tArray[1].atroopnum - tArray[4].troopnum;
+					tArray[4].troopnum = tArray[4].troopnum - tArray[4].troopnum;
+
+
+				}
+				if (tArray[1].atroopnum < uArray[0].uaroll1)
+				{
+					//   print("roll is bigger than enemy troops and i should work");
+					tArray[4].troopnum = tArray[4].troopnum - tArray[1].atroopnum;
+					tArray[1].atroopnum = tArray[1].atroopnum - tArray[1].atroopnum;
+
+				}
+				else
+				{
+					//  print("roll is smaller than enemy troops and i should work");
+					tArray[4].troopnum = tArray[4].troopnum - uArray[0].uaroll1;
+					tArray[1].atroopnum = tArray[1].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[4].troopnum < 0)
+				{
+					tArray[4].troopnum = 0;
+				}
+
+				if (tArray[1].atroopnum < 0)
+				{
+					tArray[1].atroopnum = 0;
+				}
+
+
+				//minus one from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedEU = false;
+			}
+			releaseNA = false;
+		}
+
+
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////// Release on ASia
+		//if mouse released on Asia
+		if (mouseX > tArray[2].x + 100 && mouseX < tArray[2].x + (400) &&
+			mouseY > tArray[2].y && mouseY < (tArray[2].y + 400))
+		{
+			releaseAS = true;
+
+			//if during attack phase and there are drag attacks left and Africa was pressed
+			if (releaseAS == true && click == 1 && pressedAF == true && dragattacks > 0 && tArray[5].atroopnum == 0)
+			{
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[2].atroopnum == 0)
+				{
+					if (tArray[5].troopnum < uArray[0].uaroll1)
+					{
+						tArray[2].troopnum = tArray[2].troopnum + tArray[5].troopnum;
+						tArray[5].troopnum = tArray[5].troopnum - tArray[5].troopnum;
+					}
+					else
+					{
+						tArray[2].troopnum = tArray[2].troopnum + uArray[0].uaroll1;
+						tArray[5].troopnum = tArray[5].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[5].troopnum < uArray[0].uaroll1)
+				{
+					tArray[2].atroopnum = tArray[2].atroopnum - tArray[5].troopnum;
+					tArray[5].troopnum = tArray[5].troopnum - tArray[5].troopnum;
+
+
+				}
+				if (tArray[2].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[5].troopnum = tArray[5].troopnum - tArray[2].atroopnum;
+					tArray[2].atroopnum = tArray[2].atroopnum - tArray[2].atroopnum;
+
+				}
+				else
+				{
+					tArray[5].troopnum = tArray[5].troopnum - uArray[0].uaroll1;
+					tArray[2].atroopnum = tArray[2].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[5].troopnum < 0)
+				{
+					tArray[5].troopnum = 0;
+				}
+
+				if (tArray[2].atroopnum < 0)
+				{
+					tArray[2].atroopnum = 0;
+				}
+
+
+				//minus one from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedAF = false;
+			}
+			//if during attack phase and there are drag attacks left and Europe was pressed
+			if (releaseAS == true && click == 1 && pressedEU == true && dragattacks > 0 && tArray[4].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[2].atroopnum == 0)
+				{
+					if (tArray[4].troopnum < uArray[0].uaroll1)
+					{
+						tArray[2].troopnum = tArray[2].troopnum + tArray[4].troopnum;
+						tArray[4].troopnum = tArray[4].troopnum - tArray[4].troopnum;
+					}
+					else
+					{
+						tArray[2].troopnum = tArray[2].troopnum + uArray[0].uaroll1;
+						tArray[4].troopnum = tArray[4].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[4].troopnum < uArray[0].uaroll1)
+				{
+					tArray[2].atroopnum = tArray[2].atroopnum - tArray[4].troopnum;
+					tArray[4].troopnum = tArray[4].troopnum - tArray[4].troopnum;
+
+
+				}
+				if (tArray[2].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[4].troopnum = tArray[4].troopnum - tArray[2].atroopnum;
+					tArray[2].atroopnum = tArray[2].atroopnum - tArray[2].atroopnum;
+
+				}
+				else
+				{
+					tArray[4].troopnum = tArray[4].troopnum - uArray[0].uaroll1;
+					tArray[2].atroopnum = tArray[2].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[4].troopnum < 0)
+				{
+					tArray[4].troopnum = 0;
+				}
+
+				if (tArray[2].atroopnum < 0)
+				{
+					tArray[2].atroopnum = 0;
+				}
+
+				//minus one from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedEU = false;
+			}
+			//if during attack phase and there are drag attacks left and Australia was pressed
+			if (releaseAS == true && click == 1 && pressedAU == true && dragattacks > 0 && tArray[3].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[2].atroopnum == 0)
+				{
+					if (tArray[3].troopnum < uArray[0].uaroll1)
+					{
+						tArray[2].troopnum = tArray[2].troopnum + tArray[3].troopnum;
+						tArray[3].troopnum = tArray[3].troopnum - tArray[3].troopnum;
+					}
+					else
+					{
+						tArray[2].troopnum = tArray[2].troopnum + uArray[0].uaroll1;
+						tArray[3].troopnum = tArray[3].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[3].troopnum < uArray[0].uaroll1)
+				{
+					tArray[2].atroopnum = tArray[2].atroopnum - tArray[3].troopnum;
+					tArray[3].troopnum = tArray[3].troopnum - tArray[3].troopnum;
+
+
+				}
+				if (tArray[2].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[3].troopnum = tArray[3].troopnum - tArray[2].atroopnum;
+					tArray[2].atroopnum = tArray[2].atroopnum - tArray[2].atroopnum;
+
+				}
+				else
+				{
+					tArray[3].troopnum = tArray[3].troopnum - uArray[0].uaroll1;
+					tArray[2].atroopnum = tArray[2].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[3].troopnum < 0)
+				{
+					tArray[3].troopnum = 0;
+				}
+
+				if (tArray[2].atroopnum < 0)
+				{
+					tArray[2].atroopnum = 0;
+				}
+
+				// minus one from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedAU = false;
+			}
+
+			releaseAS = false;
+		}
+
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////// Release on AUstralia
+		// if mouse released on Australia
+		if (mouseX > tArray[3].x && mouseX < tArray[3].x + (200) &&
+			mouseY > tArray[3].y && mouseY < (tArray[3].y + 150))
+		{
+			releaseAU = true;
+			//if during attack phase and there are drag attacks left and Asia was pressed
+			if (releaseAU == true && click == 1 && pressedAS == true && dragattacks > 0 && tArray[2].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[3].atroopnum == 0)
+				{
+					if (tArray[2].troopnum < uArray[0].uaroll1)
+					{
+						tArray[3].troopnum = tArray[3].troopnum + tArray[2].troopnum;
+						tArray[2].troopnum = tArray[2].troopnum - tArray[2].troopnum;
+					}
+					else
+					{
+						tArray[3].troopnum = tArray[3].troopnum + uArray[0].uaroll1;
+						tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[2].troopnum < uArray[0].uaroll1)
+				{
+					tArray[3].atroopnum = tArray[3].atroopnum - tArray[2].troopnum;
+					tArray[2].troopnum = tArray[2].troopnum - tArray[2].troopnum;
+
+				}
+				if (tArray[3].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[2].troopnum = tArray[2].troopnum - tArray[3].atroopnum;
+					tArray[3].atroopnum = tArray[3].atroopnum - tArray[3].atroopnum;
+
+				}
+				else
+				{
+					tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+					tArray[3].atroopnum = tArray[3].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[2].troopnum < 0)
+				{
+					tArray[2].troopnum = 0;
+				}
+
+				if (tArray[3].atroopnum < 0)
+				{
+					tArray[3].atroopnum = 0;
+					print("end of loop");
+				}
+
+				//minus one from the drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedAS = false;
+			}
+			releaseAU = false;
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////// Release on EUrope
+		//if mouse released on Europe
+		if (mouseX > tArray[4].x && mouseX < tArray[4].x + (220) &&
+			mouseY > tArray[4].y && mouseY < (tArray[4].y + 250))
+		{
+
+			releaseEU = true;
+			//if during attack phase and there are drag attacks left and North Aerica was pressed
+			if (releaseEU == true && click == 1 && pressedNA == true && dragattacks > 0 && tArray[1].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[4].atroopnum == 0)
+				{
+					if (tArray[1].troopnum < uArray[0].uaroll1)
+					{
+						tArray[4].troopnum = tArray[4].troopnum + tArray[1].troopnum;
+						tArray[1].troopnum = tArray[1].troopnum - tArray[1].troopnum;
+					}
+					else
+					{
+						tArray[4].troopnum = tArray[4].troopnum + uArray[0].uaroll1;
+						tArray[1].troopnum = tArray[1].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				//print("enter NA to EU loop");
+				if (tArray[1].troopnum < uArray[0].uaroll1)
+				{
+					tArray[4].atroopnum = tArray[4].atroopnum - tArray[1].troopnum;
+					tArray[1].troopnum = tArray[1].troopnum - tArray[1].troopnum;
+
+				}
+				if (tArray[4].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[1].troopnum = tArray[1].troopnum - tArray[4].atroopnum;
+					tArray[4].atroopnum = tArray[4].atroopnum - tArray[4].atroopnum;
+
+				}
+				else
+				{
+					tArray[1].troopnum = tArray[1].troopnum - uArray[0].uaroll1;
+					tArray[4].atroopnum = tArray[4].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[1].troopnum < 0)
+				{
+					tArray[1].troopnum = 0;
+				}
+
+				if (tArray[4].atroopnum < 0)
+				{
+					tArray[4].atroopnum = 0;
+					print("end of loop");
+				}
+
+				//take one away from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedNA = false;
+			}
+			//if during attack phase and there are drag attacks left and Asia was pressed
+			if (releaseEU == true && click == 1 && pressedAS == true && dragattacks > 0 && tArray[2].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[4].atroopnum == 0)
+				{
+					if (tArray[2].troopnum < uArray[0].uaroll1)
+					{
+						tArray[4].troopnum = tArray[4].troopnum + tArray[2].troopnum;
+						tArray[2].troopnum = tArray[2].troopnum - tArray[2].troopnum;
+					}
+					else
+					{
+						tArray[4].troopnum = tArray[4].troopnum + uArray[0].uaroll1;
+						tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[2].troopnum < uArray[0].uaroll1)
+				{
+					tArray[4].atroopnum = tArray[4].atroopnum - tArray[2].troopnum;
+					tArray[2].troopnum = tArray[2].troopnum - tArray[2].troopnum;
+
+
+				}
+				if (tArray[4].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[2].troopnum = tArray[2].troopnum - tArray[4].atroopnum;
+					tArray[4].atroopnum = tArray[4].atroopnum - tArray[4].atroopnum;
+
+				}
+				else
+				{
+					tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+					tArray[4].atroopnum = tArray[4].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[2].troopnum < 0)
+				{
+					tArray[2].troopnum = 0;
+				}
+
+				if (tArray[4].atroopnum < 0)
+				{
+					tArray[4].atroopnum = 0;
+				}
+
+				//take one away from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedAS = false;
+			}
+			releaseEU = false;
+		}
+
+
+
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////// Release on AFrica
+		//if mouse was released on Africa
+		if (mouseX > tArray[5].x && mouseX < tArray[5].x + (200) &&
+			mouseY > tArray[5].y && mouseY < (tArray[5].y + 270))
+		{
+
+			releaseAF = true;
+			//if during attack phase and there are drag attacks left and South America was pressed
+			if (releaseAF == true && click == 1 && pressedSA == true && dragattacks > 0 && tArray[0].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[5].atroopnum == 0)
+				{
+					if (tArray[0].troopnum < uArray[0].uaroll1)
+					{
+						tArray[5].troopnum = tArray[5].troopnum + tArray[0].troopnum;
+						tArray[0].troopnum = tArray[0].troopnum - tArray[0].troopnum;
+					}
+					else
+					{
+						tArray[5].troopnum = tArray[5].troopnum + uArray[0].uaroll1;
+						tArray[0].troopnum = tArray[0].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[0].troopnum < uArray[0].uaroll1)
+				{
+					tArray[5].atroopnum = tArray[5].atroopnum - tArray[0].troopnum;
+					tArray[0].troopnum = tArray[0].troopnum - tArray[0].troopnum;
+
+
+				}
+				if (tArray[5].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[0].troopnum = tArray[0].troopnum - tArray[5].atroopnum;
+					tArray[5].atroopnum = tArray[5].atroopnum - tArray[5].atroopnum;
+
+				}
+				else
+				{
+					tArray[0].troopnum = tArray[0].troopnum - uArray[0].uaroll1;
+					tArray[5].atroopnum = tArray[5].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[0].troopnum < 0)
+				{
+					tArray[0].troopnum = 0;
+				}
+
+				if (tArray[5].atroopnum < 0)
+				{
+					tArray[5].atroopnum = 0;
+				}
+
+
+				//take one away from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedSA = false;
+			}
+
+			//if during attack phase and there are drag attacks left and Asia was pressed
+			if (releaseAF == true && click == 1 && pressedAS == true && dragattacks > 0 && tArray[2].atroopnum == 0)
+			{
+
+				///transfer of troops
+				// Drag attack calculations depending on whether the agent has no troops in the territory...
+				// and whether the agent troops or the user troops are smaller than the user rolled attack
+				if (tArray[5].atroopnum == 0)
+				{
+					if (tArray[2].troopnum < uArray[0].uaroll1)
+					{
+						tArray[5].troopnum = tArray[5].troopnum + tArray[2].troopnum;
+						tArray[2].troopnum = tArray[2].troopnum - tArray[2].troopnum;
+					}
+					else
+					{
+						tArray[5].troopnum = tArray[5].troopnum + uArray[0].uaroll1;
+						tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+					}
+				}
+
+
+				if (tArray[2].troopnum < uArray[0].uaroll1)
+				{
+					tArray[5].atroopnum = tArray[5].atroopnum - tArray[2].troopnum;
+					tArray[2].troopnum = tArray[2].troopnum - tArray[2].troopnum;
+
+
+				}
+				if (tArray[5].atroopnum < uArray[0].uaroll1)
+				{
+					tArray[2].troopnum = tArray[2].troopnum - tArray[5].atroopnum;
+					tArray[5].atroopnum = tArray[5].atroopnum - tArray[5].atroopnum;
+
+				}
+				else
+				{
+					tArray[2].troopnum = tArray[2].troopnum - uArray[0].uaroll1;
+					tArray[5].atroopnum = tArray[5].atroopnum - uArray[0].uaroll1;
+
+				}
+				//Dont allow the agent/user troops to drop below 0
+				if (tArray[2].troopnum < 0)
+				{
+					tArray[2].troopnum = 0;
+				}
+				// tArray[5].atroopnum = tArray[5].atroopnum - uArray[0].uaroll1;
+				if (tArray[5].atroopnum < 0)
+				{
+					tArray[5].atroopnum = 0;
+				}
+
+
+				//take away 1 from drag attack counter
+				dragattacks = dragattacks - 1;
+				//randomly take away agent attack roll from user territory, Price to pay for drag attack
+				int rand = int(random(tArray.length));
+				tArray[rand].troopnum = tArray[rand].troopnum - aArray[0].aaroll1;
+				// println(" att"+tArray[rand].tnum);
+				if (tArray[rand].troopnum < 0)
+				{
+					tArray[rand].troopnum = 0;
+				}
+				pressedAS = false;
+			}
+			releaseAF = false;
+		}
+
+
+	}
+
+
+}
